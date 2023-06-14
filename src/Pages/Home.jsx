@@ -6,10 +6,11 @@ import Video from "../Components/Video";
 
 const Home = () => {
 
-  //
+  const [videoPlaying, setVideoPlaying] = useState(true); // Assuming the video is playing when the page loads
   const [gif, setGif] = useState(false);
-
   const audioRef = useRef(null);
+  const bgMusicRef = useRef(null);
+
 
 
   useEffect(() => {
@@ -29,17 +30,25 @@ const Home = () => {
   useEffect(() => {
     if (gif && audioRef.current) {
       audioRef.current.play();
+      if (bgMusicRef.current) {
+        bgMusicRef.current.pause();
+      }
     } else if (!gif && audioRef.current) {
       audioRef.current.pause();
       audioRef.current.currentTime = 0; // Optional: reset audio to the start
+      if (videoPlaying && bgMusicRef.current) {
+        bgMusicRef.current.play();
+      }
     }
-  }, [gif]);
+  }, [gif, videoPlaying]);
 
   return (
     <div className="home-wrapper">
 
       {gif ? <Over /> : null}
-      <audio ref={audioRef} src={'/sounds/keyboard-stress-36591.mp3'} />
+      <audio ref={audioRef} src={'/sounds/sound-gif-1.mp3'} />
+      <audio ref={bgMusicRef} src={'/sounds/bg-music.mp3'} />
+
 
       <Video />
     </div>
