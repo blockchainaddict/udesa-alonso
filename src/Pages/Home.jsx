@@ -62,7 +62,7 @@ const Home = () => {
       {gif ? <Over /> : null}
 
       <audio ref={bgMusicRef} src={'/sounds/bg-music.mp3'} />
-      <audio ref={audioRef} src={sfxList[number]} />
+      <audio ref={audioRef} src={'/sounds/sound-gif-2.mp3'} />
 
       <Video />
 
