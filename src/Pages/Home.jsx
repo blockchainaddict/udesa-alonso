@@ -17,6 +17,17 @@ const Home = () => {
   const audioRef = useRef(null);
   const bgMusicRef = useRef(null);
 
+  // To alternate the GIFs via props
+  const [ videoIndex, setVideoIndex ] = useState(0);
+
+  // To alternate the gifs via Props
+  useEffect(() => {
+    if (gif) { // Only update videoIndex if gif is truthy
+      setVideoIndex(prevIndex => (prevIndex + 1) % 3); // This will cycle 0,1,2,0,1,2,...
+    }
+  }, [gif]); // This hook will run whenever gif changes
+
+  // To make a keydown launch the Over component
   useEffect(() => {
     const handleKeyDown = () => {
       setGif(true);
@@ -53,7 +64,7 @@ const Home = () => {
   return (
     <div className="home-wrapper">
      
-      {gif ? <Over /> : null}
+      {gif ? <Over video={videoIndex} /> : null}
 
       <audio ref={bgMusicRef} src={'/sounds/bg-music.mp3'} />
       <audio ref={audioRef} src={'/sounds/sound-gif-3.mp3'} />
