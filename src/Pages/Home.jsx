@@ -1,10 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import Console from "../Components/Console";
 import Over from "../Components/Over";
 import Video from "../Components/Video";
-
-let sfxList = ['/sounds/sound-gif-1.mp3', '/sounds/sound-gif-2.mp3', '/sounds/sound-gif-3.mp3'];
 
 // Create random number between 0 and 2
 function getRandomNumber() {
@@ -55,14 +52,11 @@ const Home = () => {
 
   return (
     <div className="home-wrapper">
-      {/* <h2 style={{position: 'absolute', zIndex: 5, background:'white'}}>{number}</h2> */}
-      {/* <h2 style={{position: 'absolute', zIndex: 5, background:'white'}}>{sfxList[number]}</h2> */}
-
-
+     
       {gif ? <Over /> : null}
 
       <audio ref={bgMusicRef} src={'/sounds/bg-music.mp3'} />
-      <audio ref={audioRef} src={'/sounds/sound-gif-2.mp3'} />
+      <audio ref={audioRef} src={'/sounds/sound-gif-3.mp3'} />
 
       <Video />
 

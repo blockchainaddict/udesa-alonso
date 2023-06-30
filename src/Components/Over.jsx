@@ -8,6 +8,17 @@ function getRandomNumber() {
 
 const Over = () => {
 
+  const [ video, setVideo ] = useState(0);
+
+  // function videoAlternation (){
+  //   if(video=0){
+  //     setVideo(1)
+  //   }
+  //   else{
+  //     setVideo(0)
+  //   }
+  // }
+
   return (
     <div className='over-wrapper'>
         <img src={videoList[getRandomNumber()]} alt="gif" />
